@@ -1,8 +1,6 @@
 import pandas as pd
 import os
 
-from sympy.simplify.simplify import product_simplify
-
 # Handle relative paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -37,7 +35,23 @@ sales = sales[[
     'customer_state',
     'order_status',
     'order_purchase_timestamp',
+    'order_approved_at',
 ]]
+
+# Fill missing datetime values with median - less sensitive to outliers than the mean
+median_timestamp = sales['order_approved_at'].dropna().apply(lambda x: x.timestamp()).median()
+median_date = pd.to_datetime(median_timestamp, unit='s')
+sales['order_approved_at'] = sales['order_approved_at'].fillna(median_date)
+
+# Drop rows with missing critical values
+sales = sales.dropna(subset=['order_id', 'product_id', 'price'])
+
+# Remove any duplicates
+sales = sales.drop_duplicates()
+
+# Ensure valid pricing (>= 0)
+sales = sales[sales['price'] > 0]
+sales = sales[sales['freight_value'] > 0]
 
 # Save and store the cleaned dataset
 os.makedirs(os.path.join(script_dir, "..", "data", "clean"), exist_ok=True)
