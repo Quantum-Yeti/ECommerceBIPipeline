@@ -18,6 +18,15 @@ def clean_data(data):
     # Drop missing data
     merged = merged.dropna(subset=['user_id', 'product_id','order_number'])
 
+    # Drop duplicates
+    merged = merged.drop_duplicates()
+
+    # Convert relevant data to categorical columns
+    categorical_columns = ['product_name', 'aisle', 'department']
+    for column in categorical_columns:
+        if column in merged.columns:
+            merged[column] = merged[column].astype('category')
+
     # Feature engineering - total items per order/total orders  per user
     merged['total_items_in_order'] = merged.groupby('order_id')['order_id'].transform('count')
     merged['total_orders_by_user'] = merged.groupby('user_id')['order_number'].transform('max')

@@ -10,17 +10,19 @@ def run_exploration():
     # Load clean data
     df = pd.read_csv("../data/clean/clean_data.csv")
 
+    # Sample size from multi-gig file
     explorer = DataExplorer(df, sample_size=100000)
 
-    explorer.overview()
-    explorer.missing_values()
-    explorer.descript_stats()
-    explorer.plot_histograms()
-    explorer.plot_boxplot()
-    explorer.correlation_matrix()
+    explorer.overview()             # Overview
+    explorer.missing_values()       # Missing values
+    explorer.descript_stats()       # Descriptive stats
+    explorer.plot_histograms()      # Histograms
+    explorer.plot_boxplot()         # BoxPlots
+    explorer.correlation_matrix()   # Correlation matrix
 
-    pivot_user = explorer.pivot_table_summary('user_id')
-    pivot_product = explorer.pivot_table_summary('product_name')
+    # Pivot tables
+    explorer.pivot_table_summary('user_id')
+    explorer.pivot_table_summary('product_name')
 
     # Linear Regression: 'total_items_in_order' vs 'add_to_cart_order'
     explorer.linear_regression('total_items_in_order', 'add_to_cart_order')
@@ -108,7 +110,7 @@ class DataExplorer:
         plt.legend()
         plt.show()
 
-        print(f"\nCoefficient: {model.coef_[0]:.4f}, Intercept: {model.intercept_:.4f}")
+        print(f"\n//===Coefficient: {model.coef_[0]:.4f}, Intercept: {model.intercept_:.4f}===\\")
 
     # Pivot table - total items per user/product
     def pivot_table_summary(self, index_col,values_col='product_id', aggfunc='count'):
@@ -173,7 +175,7 @@ class DataExplorer:
         print(classification_report(y_test, y_pred))
         print("ROC AUC:", roc_auc_score(y_test, y_prob))
 
-        # Optional confusion matrix heatmap
+        # Confusion matrix heatmap
         cm = confusion_matrix(y_test, y_pred)
         plt.figure(figsize=(6, 4))
         sns.heatmap(cm, annot=True, fmt="d", cmap='Blues')
