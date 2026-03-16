@@ -45,7 +45,7 @@ The dataset is sourced from ![Kaggle: Instacart Market Basket Analysis](https://
 ### Project Structure
 ```project/
 ├── data/
-│ ├── raw/ # Original Instacart CSV files
+│ ├── raw/ # Original Instacart CSV files downloaded here (not tracked/large file size)
 │ └── clean/ # Cleaned and merged dataset(s)
 ├── notebooks/ # Jupyter notebooks for analysis
 ├── scripts/ # Python scripts for ETL and modeling
