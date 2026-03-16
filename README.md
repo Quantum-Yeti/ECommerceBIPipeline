@@ -55,6 +55,10 @@ The dataset is sourced from ![Kaggle: Instacart Market Basket Analysis](https://
 
 # Featured Report Images
 ![Screenshot1](/images/screenshotbi1.png)
+![Screenshot2](/images/screenshotbi2.png)
+![Screenshot5](/images/screenshotbi5.png)
+![Screenshot4](/images/screenshotbi4.png)
+![Screenshot3](/images/screenshotbi3.png)
 
 
 
