@@ -1,9 +1,9 @@
-# Instacart Market Basket Analysis (BI Data Analysis Project)
+# Market Basket Analysis (BI Data Analysis Project)
 
 ---
 
 ### Project Overview
-This project analyzes the Instacart dataset to uncover patterns in customer purchasing behavior, product reorders, and basket composition. Using the relational data from multiple tables, theproject demonstrates advanced data cleaning, feature engineering, exploratory data analysis, and predictive modeling.
+This project analyzes the Instacart dataset to uncover patterns in customer purchasing behavior, product reorders, and basket composition. Using the relational data from multiple tables, the project demonstrates advanced data cleaning, feature engineering, exploratory data analysis, and predictive modeling.
 
 ### Dataset
 The dataset is sourced from ![Kaggle: Instacart Market Basket Analysis](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)

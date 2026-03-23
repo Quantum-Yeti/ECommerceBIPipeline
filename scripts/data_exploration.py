@@ -114,18 +114,22 @@ class DataExplorer:
         print(f"\n//===Coefficient: {model.coef_[0]:.4f}, Intercept: {model.intercept_:.4f}===\\")
 
     # Pivot table - total items per user/product
-    def pivot_table_summary(self, index_col,values_col='product_id', aggfunc='count'):
+    def pivot_table_summary(self, index_col):
+
         if index_col not in self.df.columns:
-            print(f"Columns {index_col} not found in dataframe.")
+            print(f"{index_col} not found in dataframe.")
             return None
-        pivot = pd.pivot_table(
-            self.df,
-            index=index_col,
-            values=values_col,
-            aggfunc=aggfunc,
-        ).sort_values(by=values_col, ascending=False)
-        print(f"\nPivot Table: {aggfunc} of {values_col} by {index_col}")
+
+        pivot = (
+            self.df
+            .groupby(index_col)
+            .size()
+            .sort_values(ascending=False)
+        )
+
+        print(f"\nPivot Table: Count by {index_col}")
         print(pivot.head(50))
+
         return pivot
 
     # Reorder probability per product
