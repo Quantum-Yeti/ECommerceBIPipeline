@@ -78,7 +78,8 @@ def export_powerbi_tables(df):
 
 def generate_apriori(df, sample_orders=50000, top_products=200, min_support=0.01, min_confidence=0.3):
     """
-    Memory-efficient Apriori for large datasets reduced to patterns for bananas.
+    Apriori algorithm that is memory safe due to sampling, sparse matrices, top product filtering
+    - This memory safe method fixes memory issues with extremely large datasets.
     - df: cleaned dataframe with 'order_id' and 'product_name'
     - sample_orders: number of orders to sample for analysis
     - top_products: only consider top N products by purchase frequency
