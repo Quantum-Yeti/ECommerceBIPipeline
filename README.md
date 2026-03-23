@@ -5,6 +5,8 @@
 ### Project Overview
 This project analyzes the Instacart dataset to uncover patterns in customer purchasing behavior, product reorders, and basket composition. Using the relational data from multiple tables, the project demonstrates advanced data cleaning, feature engineering, exploratory data analysis, and predictive modeling.
 
+![PowerBiDashboard](/images/powerbiscreenshot.png)
+
 ### Dataset
 The dataset is sourced from ![Kaggle: Instacart Market Basket Analysis](https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis)
 
